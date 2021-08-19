@@ -1,38 +1,42 @@
+import React, { Suspense } from 'react'
 import './App.css';
-import { Link,Route } from 'wouter';
+import { Link, Route } from 'wouter';
 
-import Home from './pages/Home/index';
 import SearchResults from './pages/SearchResults/index';
 import Detail from './pages/Detail/index';
 import StaticContext from './context/StaticContext';
 import { GifsContextProvider } from './context/GifsContext';
 
+const HomePage = React.lazy(() => import('./pages/Home/index'))
+
 function App() {
 
   return (
-   <StaticContext.Provider value={{name: 'lonperman', suscribete: true}}>
+    <StaticContext.Provider value={{ name: 'lonperman', suscribete: true }}>
+      <Suspense fallback={null}>
         <div className="App">
           <section className="App-content">
-              <Link to="/">
-                <img className="App-logo" alt="Giffy logo" src="/logo-old.png"/>
-              </Link>
-              <GifsContextProvider>
-                <Route
-                  component={Home}
-                  path="/"
-                />
-                <Route
-                  component={SearchResults}
-                  path="/search/:keyword"
-                />
-                <Route
-                  component={Detail}
-                  path="/gif/:id"
-                />
-              </GifsContextProvider>
+            <Link to="/">
+              <img className="App-logo" alt="Giffy logo" src="/logo.png" />
+            </Link>
+            <GifsContextProvider>
+              <Route
+                component={HomePage}
+                path="/"
+              />
+              <Route
+                component={SearchResults}
+                path="/search/:keyword"
+              />
+              <Route
+                component={Detail}
+                path="/gif/:id"
+              />
+            </GifsContextProvider>
           </section>
-      </div>
-   </StaticContext.Provider>
+        </div>
+      </Suspense>
+    </StaticContext.Provider>
   );
 }
 
