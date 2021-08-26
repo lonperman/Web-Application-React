@@ -2,20 +2,24 @@ import React, { Suspense } from 'react'
 import './App.css';
 import { Link, Route } from 'wouter';
 
-import SearchResults from './pages/SearchResults/index';
-import Detail from './pages/Detail/index';
-import StaticContext from './context/StaticContext';
+import Header from 'components/Header';
+import Login from 'pages/Login'
+import SearchResults from 'pages/SearchResults/index';
+import Detail from 'pages/Detail/index';
+
+import { UserContextProvider } from 'context/UserContext';
 import { GifsContextProvider } from './context/GifsContext';
 
-const HomePage = React.lazy(() => import('./pages/Home/index'))
+const HomePage = React.lazy(() => import('pages/Home/index'))
 
 function App() {
 
   return (
-    <StaticContext.Provider value={{ name: 'lonperman', suscribete: true }}>
+    <UserContextProvider>
       <Suspense fallback={null}>
         <div className="App">
           <section className="App-content">
+            <Header />
             <Link to="/">
               <img className="App-logo" alt="Giffy logo" src="/logo.png" />
             </Link>
@@ -33,6 +37,10 @@ function App() {
                 path="/gif/:id"
               />
               <Route
+                component={Login}
+                path="/login"
+              />
+              <Route
                 component={() => <h1>404 ERROR :(</h1>}
                 path="/404"
               />
@@ -40,7 +48,7 @@ function App() {
           </section>
         </div>
       </Suspense>
-    </StaticContext.Provider>
+    </UserContextProvider>
   );
 }
 
