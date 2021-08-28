@@ -6,6 +6,7 @@ import Header from 'components/Header';
 import Login from 'pages/Login'
 import SearchResults from 'pages/SearchResults/index';
 import Detail from 'pages/Detail/index';
+import Register from 'components/Register/indexFormik';
 
 import { UserContextProvider } from 'context/UserContext';
 import { GifsContextProvider } from './context/GifsContext';
@@ -39,6 +40,10 @@ function App() {
               <Route
                 component={Login}
                 path="/login"
+              />
+              <Route 
+                component={Register}
+                path="/register"
               />
               <Route
                 component={() => <h1>404 ERROR :(</h1>}
