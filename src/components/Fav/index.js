@@ -8,7 +8,7 @@ import './Fav.css';
 
 
 export default function Fav({ id }) {
-    const { isLogged, addFav } = useUser()
+    const { isLogged, addFav, favs } = useUser()
     const [, navigate] = useLocation()
     const [showModal, setShowModal] = useState(false)
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from 'wouter'
-import css from './styles.css'
-import Button from 'components/Button'
+import css from './SearchForm.module.css'
+import Button from 'components/Button/index'
 import useForm from "./hook";
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r'];

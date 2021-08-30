@@ -17,7 +17,9 @@ const getFontSize = props => {
 }
 
 export const Link = styled(LinkWouter)`
+  background-color: #8A2BE2;
   border: 1px solid transparent;
+  color: #FFFFFF;
   cursor: pointer;
   font-size: ${getFontSize};
   padding: .5rem 1rem;

@@ -1,4 +1,4 @@
-import Register from "components/Register/indexFormik";
+import Register from "components/Register/index";
 
 
 export default function RegisterPage (){
